@@ -338,10 +338,10 @@ $_SESSION['brndid']=$result->bid;
           </div>
           <form method="post">
           <div class="form-group">
-              <input type="text" class="form-control datepicker" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
+              <input type="date" class="form-control datepicker" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
           </div>
           <div class="form-group">
-              <input type="text" class="form-control datepicker" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
+              <input type="date" class="form-control datepicker" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
           </div>
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
