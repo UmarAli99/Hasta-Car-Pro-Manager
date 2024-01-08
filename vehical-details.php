@@ -37,12 +37,17 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- jQuery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="keywords" content="">
 <meta name="description" content="">
-<title>Car Rental Port | Vehicle Details</title>
+<title>Hasta Car Pro | Vehicle Details</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -332,12 +337,12 @@ $_SESSION['brndid']=$result->bid;
             <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
           </div>
           <form method="post">
-            <div class="form-group">
-              <input type="text" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
-            </div>
+          <div class="form-group">
+              <input type="text" class="form-control datepicker" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control datepicker" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
+          </div>
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
             </div>
@@ -429,6 +434,14 @@ foreach($results as $result)
 <script src="assets/js/bootstrap-slider.min.js"></script> 
 <script src="assets/js/slick.min.js"></script> 
 <script src="assets/js/owl.carousel.min.js"></script>
+<script>
+    $(function() {
+        $(".datepicker").datepicker({
+            dateFormat: 'dd/mm/yy',
+            minDate: 0 // Set the minimum date to today
+        });
+    });
+</script>
 
 </body>
 </html>

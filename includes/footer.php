@@ -44,7 +44,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
             <li><a href="page.php?type=faqs">FAQs</a></li>
             <li><a href="page.php?type=privacy">Privacy</a></li>
           <li><a href="page.php?type=terms">Terms of use</a></li>
-               <li><a href="admin/">Admin Login</a></li>
+               <li><a href="admin/">Admin login</a></li>
           </ul>
         </div>
 
@@ -79,7 +79,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
           </div>
         </div>
         <div class="col-md-6 col-md-pull-6">
-          <p class="copy-right">Copyright &copy; 2017 Car Rental Portal. Brought To You By <a href="https://code-projects.org/">Code-Projects</a></p>
+          <p class="copy-right">Copyright &copy; 2020 Hasta Car Pro Manager. Brought To You By <a href="#">Hasta</a></p>
         </div>
       </div>
     </div>

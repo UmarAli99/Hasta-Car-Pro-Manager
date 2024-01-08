@@ -1,4 +1,3 @@
-
 <header>
   <div class="default-header">
     <div class="container">
@@ -11,29 +10,32 @@
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Support Mail us : </p>
-              <a href="mailto:info@example.com">codeprojectsorg@gmail.com</a> </div>
+              <a href="mailto:info@example.com">hasta@utm.my</a>
+            </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">Service Helpline Call Us: </p>
-              <a href="tel:61-1234-5678-09">+91-9876543210</a> </div>
+              <a href="tel:61-1234-5678-09">+012-3456789</a>
+            </div>
             <div class="social-follow">
               <ul>
-                <li><a href="https://code-projects.org/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                <li><a href="https://code-projects.org/"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-                <li><a href="https://code-projects.org/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                <li><a href="https://code-projects.org/"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
-                <li><a href="https://code-projects.org/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <!-- Social media icons -->
               </ul>
             </div>
-   <?php   if(strlen($_SESSION['login'])==0)
-	{
-?>
- <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </div>
-<?php }
-else{
-
-echo "Welcome To Car rental portal";
- } ?>
+            <?php if (strlen($_SESSION['login']) == 0) { ?>
+              <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </div>
+            <?php } else {
+              $email = $_SESSION['login'];
+              $sql = "SELECT FullName FROM tblusers WHERE EmailId=:email";
+              $query = $dbh->prepare($sql);
+              $query->bindParam(':email', $email, PDO::PARAM_STR);
+              $query->execute();
+              $result = $query->fetch(PDO::FETCH_OBJ);
+              ?>
+              <!-- <div class="welcome_text">
+                Welcome To Hasta Car Pro, <?php echo htmlentities($result->FullName); ?>
+              </div> -->
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -50,60 +52,49 @@ echo "Welcome To Car rental portal";
         <div class="user_login">
           <ul>
             <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
-<?php
-$email=$_SESSION['login'];
-$sql ="SELECT FullName FROM tblusers WHERE EmailId=:email ";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-	{
-
-	 echo htmlentities($result->FullName); }}?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <?php
+                $email = $_SESSION['login'];
+                $sql = "SELECT FullName FROM tblusers WHERE EmailId=:email ";
+                $query = $dbh->prepare($sql);
+                $query->bindParam(':email', $email, PDO::PARAM_STR);
+                $query->execute();
+                $result = $query->fetch(PDO::FETCH_OBJ);
+                echo htmlentities($result->FullName);
+                ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
               <ul class="dropdown-menu">
-           <?php if($_SESSION['login']){?>
-            <li><a href="profile.php">Profile Settings</a></li>
-              <li><a href="update-password.php">Update Password</a></li>
-            <li><a href="my-booking.php">My Booking</a></li>
-            <li><a href="post-testimonial.php">Post a Testimonial</a></li>
-          <li><a href="my-testimonials.php">My Testimonial</a></li>
-            <li><a href="logout.php">Sign Out</a></li>
-            <?php } else { ?>
-            <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Profile Settings</a></li>
-              <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Update Password</a></li>
-            <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">My Booking</a></li>
-            <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Post a Testimonial</a></li>
-          <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">My Testimonial</a></li>
-            <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">Sign Out</a></li>
-            <?php } ?>
-          </ul>
+                <?php if ($_SESSION['login']) { ?>
+                  <!-- Display user-related options -->
+                  <li><a href="profile.php">Profile Settings</a></li>
+                  <li><a href="update-password.php">Update Password</a></li>
+                  <li><a href="my-booking.php">My Booking</a></li>
+                  <li><a href="post-testimonial.php">Post a Testimonial</a></li>
+                  <li><a href="my-testimonials.php">My Testimonial</a></li>
+                  <li><a href="logout.php">Sign Out</a></li>
+                <?php } else { ?>
+                  <!-- Display options for non-logged-in users -->
+                  <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Profile Settings</a></li>
+                  <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Update Password</a></li>
+                  <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">My Booking</a></li>
+                  <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Post a Testimonial</a></li>
+                  <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">My Testimonial</a></li>
+                  <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Login / Signout</a></li>
+                <?php } ?>
+              </ul>
             </li>
           </ul>
-        </div>
-        <div class="header_search">
-          <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
-          <form action="#" method="get" id="header-search-form">
-            <input type="text" placeholder="Search..." class="form-control">
-            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </form>
         </div>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li><a href="index.php">Home</a>    </li>
-
+          <li><a href="index.php">Home</a></li>
           <li><a href="page.php?type=aboutus">About Us</a></li>
-          <li><a href="car-listing.php">Car Listing</a>
+          <li><a href="car-listing.php">Car Listing</a></li>
           <li><a href="page.php?type=faqs">FAQs</a></li>
           <li><a href="contact-us.php">Contact Us</a></li>
-
+          <li><a href="search-car.php">Search Car</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- Navigation end -->
-
 </header>
