@@ -18,7 +18,7 @@
 					</ul>
 				</li>
 				<li><a href="manage-bookings.php"><i class="fa fa-users"></i> Manage Booking</a></li>
-				<li><a href="generate-report.php"><i class="fa fa-users"></i> Generate Sales Report</a></li>
+				<li><a href="generate-report.php"><i class="fa fa-users"></i> Generate Booking Report</a></li>
 				<li><a href="testimonials.php"><i class="fa fa-table"></i> Manage Testimonials</a></li>
 				<li><a href="manage-contactusquery.php"><i class="fa fa-desktop"></i> Manage Contact Us Query</a></li>
 				<li><a href="reg-users.php"><i class="fa fa-users"></i> Reg Users</a></li>
